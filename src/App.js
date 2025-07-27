@@ -10,8 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={!user ? <Navigate to="/login" /> : user.isAdmin ? <Navigate to="/admin" /> : <Navigate to="/calendar" />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={!user ? <Login /> : user.isAdmin ? <Navigate to="/admin" /> : <Navigate to="/calendar" />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>

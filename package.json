@@ -1,11 +1,10 @@
 {
-  "name": "nurse-off-app-firebase-name-auth",
+  "name": "nurse-off-app-final",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "build": "react-scripts build"
   },
   "dependencies": {
     "firebase": "^10.10.0",
