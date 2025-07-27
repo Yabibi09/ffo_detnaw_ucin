@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ],
+  "signups": [],
+  "settings": [],
+  "assignments": []
+}

@@ -1,0 +1,4 @@
+body { margin: 0; font-family: Arial, sans-serif; background: #f9faff; }
+button { border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
+.bubble-button { background: #4ea8de; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.calendar-container { max-width: 400px; margin: 20px auto; }
