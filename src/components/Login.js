@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import api from '../api';
 import { useNavigate } from 'react-router-dom';
@@ -11,33 +10,42 @@ export default function Login() {
 
   const handleAuth = async () => {
     if (!name || !password) return alert('이름과 비밀번호를 입력하세요.');
-    // 같은 이름의 사용자 조회
-    const res = await api.get('/users', { params: { name } });
-    const users = res.data;
-    const existing = users.find(u => u.name === name);
 
-    if (mode === 'login') {
-      // 로그인 모드
-      if (existing) {
-        if (existing.password === password) {
-          localStorage.setItem('user', JSON.stringify(existing));
-          navigate(existing.role === 'admin' ? '/admin' : '/calendar');
+    try {
+      const res = await api.get('/users', { params: { name } });
+      const users = res.data;
+      const existing = users.find(u => u.name === name);
+
+      if (mode === 'login') {
+        if (existing) {
+          if (existing.password === password) {
+            alert('로그인 성공!');
+            localStorage.setItem('user', JSON.stringify(existing));
+            navigate(existing.role === 'admin' ? '/admin' : '/calendar');
+          } else {
+            alert('비밀번호가 틀렸습니다.');
+          }
         } else {
-          alert('비밀번호가 틀렸습니다.');
+          alert('등록된 사용자가 없습니다. 회원가입해주세요.');
         }
       } else {
-        alert('등록된 사용자가 없습니다. 회원가입해주세요.');
+        if (existing) {
+          alert('이미 존재하는 이름입니다. 다른 이름을 사용하세요.');
+        } else {
+          const newUser = { name, password, role: 'user' };
+          const createRes = await api.post('/users', newUser);
+          if (createRes.status === 201) {
+            alert('회원가입 성공! 바로 로그인됩니다.');
+            localStorage.setItem('user', JSON.stringify(createRes.data));
+            navigate('/calendar');
+          } else {
+            alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+          }
+        }
       }
-    } else {
-      // 회원가입 모드
-      if (existing) {
-        alert('이미 존재하는 이름입니다. 다른 이름을 사용하세요.');
-      } else {
-        const newUser = { name, password, role: 'user' };
-        const createRes = await api.post('/users', newUser);
-        localStorage.setItem('user', JSON.stringify(createRes.data));
-        navigate('/calendar');
-      }
+    } catch (error) {
+      console.error(error);
+      alert('서버 오류가 발생했습니다. JSON Server가 실행 중인지 확인해주세요.');
     }
   };
 
@@ -94,5 +102,5 @@ export default function Login() {
         {mode === 'login' ? '로그인' : '회원가입'}
       </button>
     </div>
-  );
+);
 }
