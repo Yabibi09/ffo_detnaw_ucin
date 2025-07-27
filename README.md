@@ -7,15 +7,10 @@
    npm install
    ```
 
-2. Start JSON Server:
+2. Run both server and client together:
    ```
-   npm run server
-   ```
-
-3. In another terminal, start React app:
-   ```
-   npm start
+   npm run dev
    ```
 
-JSON server runs on http://localhost:5000
-React app runs on http://localhost:3000
+- Server: http://localhost:5000  
+- Client: http://localhost:3000
