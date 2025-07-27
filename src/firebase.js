@@ -4,18 +4,25 @@ import { getFirestore, collection, addDoc, query, where, getDocs, setDoc, doc, g
 import React, { useContext, useEffect, useState, createContext } from 'react';
 
 // TODO: Firebase 프로젝트 설정에서 복사한 config를 아래에 붙여넣으세요.
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_AUTH_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_STORAGE_BUCKET',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  apiKey: "AIzaSyAY_IG4sxWGqsViGukkGw4SK2VzP23jDI0",
+  authDomain: "ffo-detnaw-ucin.firebaseapp.com",
+  projectId: "ffo-detnaw-ucin",
+  storageBucket: "ffo-detnaw-ucin.firebasestorage.app",
+  messagingSenderId: "218591648921",
+  appId: "1:218591648921:web:aaa6f9e69b2f70cd9f6c08"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const auth = getAuth(firebase);
+const db = getFirestore(firebase);
 
 const AuthContext = createContext();
 
