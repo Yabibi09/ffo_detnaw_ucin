@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import { useAuth } from '../firebase';
+import { collection, query, getDocs, addDoc } from 'firebase/firestore';
 
 export default function CalendarPage() {
   const { user, db } = useAuth();
@@ -13,7 +14,6 @@ export default function CalendarPage() {
   }, []);
 
   const fetchData = async () => {
-    // fetch all signups and assignments from Firestore
     const q = query(collection(db, 'signups'));
     const snapshot = await getDocs(q);
     setSignups(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
