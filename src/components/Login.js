@@ -42,6 +42,3 @@ export default function Login() {
         {mode === 'login' ? '로그인' : '회원가입'}
       </button>
     </div>
-
-  );
-}

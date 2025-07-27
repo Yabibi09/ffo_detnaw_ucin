@@ -41,10 +41,8 @@ export default function CalendarPage() {
       <button className="bubble-button" onClick={submit}>신청 완료</button>
       <h3>신청 현황</h3>
       <ul>
-        {Object.entries(signups.reduce((acc,cur)=>{
-          acc[cur.date]=acc[cur.date]||[]; acc[cur.date].push(cur.name); return acc;
-        },{})).map(([d,names])=>(
-          <li key={d}>{d}: {names.length}/3 ({names.join(', ')})</li>
+        {signups.map((s, idx) => (
+          <li key={idx}>{s.date}: {s.name}</li>
         ))}
       </ul>
     </div>
