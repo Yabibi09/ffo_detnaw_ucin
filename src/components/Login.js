@@ -10,10 +10,24 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleAuth = async () => {
-    if (!name || !password) return alert('이름과 비밀번호를 입력하세요.');
+    if (!name || !password) {
+      alert('이름과 비밀번호를 입력하세요.');
+      return;
+    }
     try {
-      if (mode === 'login') await login(name, password);
-      else await signup(name, password);
+      if (mode === 'login') {
+        const success = await login(name, password);
+        if (!success) {
+          alert('로그인에 실패했습니다.');
+          return;
+        }
+      } else {
+        const created = await signup(name, password);
+        if (!created) {
+          alert('회원가입에 실패했습니다.');
+          return;
+        }
+      }
       navigate('/calendar');
     } catch (e) {
       alert(e.message);
@@ -24,8 +38,20 @@ export default function Login() {
     <div style={{ padding: '20px', maxWidth: '320px', margin: 'auto' }}>
       <h2>{mode === 'login' ? '로그인' : '회원가입'}</h2>
       <div style={{ marginBottom: '16px' }}>
-        <button onClick={() => setMode('login')} style={mode==='login'?{background:'#4ea8de',color:'white'}:{}}>로그인</button>
-        <button onClick={() => setMode('signup')} style={mode==='signup'?{background:'#4ea8de',color:'white'}:{}}>회원가입</button>
+        <button
+          onClick={() => setMode('login')}
+          className="bubble-button"
+          style={ mode === 'login' ? { background: '#4ea8de', color: 'white' } : {} }
+        >
+          로그인
+        </button>
+        <button
+          onClick={() => setMode('signup')}
+          className="bubble-button"
+          style={ mode === 'signup' ? { background: '#4ea8de', color: 'white' } : {} }
+        >
+          회원가입
+        </button>
       </div>
       <input
         placeholder="이름"
@@ -40,7 +66,9 @@ export default function Login() {
         onChange={e => setPassword(e.target.value)}
         style={{ width: '100%', padding: '8px', marginBottom: '16px' }}
       />
-      <button className="bubble-button" onClick={handleAuth} style={{width:'100%'}}>
-        {mode==='login'?'로그인':'회원가입'}
+      <button className="bubble-button" onClick={handleAuth} style={{ width: '100%' }}>
+        {mode === 'login' ? '로그인' : '회원가입'}
       </button>
     </div>
+  );
+}
