@@ -4,7 +4,12 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Init Firebase
 const firebaseConfig = {
-  // replace with your config
+  apiKey: "AIzaSyAY_IG4sxWGqsViGukkGw4SK2VzP23jDI0",
+  authDomain: "ffo-detnaw-ucin.firebaseapp.com",
+  projectId: "ffo-detnaw-ucin",
+  storageBucket: "ffo-detnaw-ucin.appspot.com",
+  messagingSenderId: "218591648921",
+  appId: "1:218591648921:web:aaa6f9e69b2f70cd9f6c08"
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
