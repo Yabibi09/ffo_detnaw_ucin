@@ -1,15 +1,4 @@
-.react-calendar .sun {
-  color: red;
-}
-.react-calendar .sat {
-  color: blue;
-}
-.selected {
-  background: #4ea8de !important;
-  color: white !important;
-  border-radius: 50%;
-}
-.full {
-  opacity: 0.5;
-  pointer-events: none;
-}
+.react-calendar .sun { color: red; }
+.react-calendar .sat { color: blue; }
+.selected { background: #4ea8de !important; color: white !important; border-radius: 50%; }
+.full { opacity: 0.5; pointer-events: none; }
