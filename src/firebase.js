@@ -1,8 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, addDoc, doc, getDoc } from 'firebase/firestore';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Firebase config
+// Firebase config (replace with actual)
 const firebaseConfig = {
   apiKey: "AIzaSyAY_IG4sxWGqsViGukkGw4SK2VzP23jDI0",
   authDomain: "ffo-detnaw-ucin.firebaseapp.com",
@@ -12,11 +12,9 @@ const firebaseConfig = {
   appId: "1:218591648921:web:aaa6f9e69b2f70cd9f6c08"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Auth Context
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -53,11 +51,7 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  return (
-    <AuthContext.Provider value={{ user, login, signup, logout, db }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, login, signup, logout, db }}>{children}</AuthContext.Provider>;
 }
 
 export const useAuth = () => useContext(AuthContext);

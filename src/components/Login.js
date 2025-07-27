@@ -15,11 +15,8 @@ export default function Login() {
     if (!name || !password) return alert('이름과 비밀번호를 입력하세요.');
     setLoading(true);
     try {
-      if (mode === 'login') {
-        await login(name, password);
-      } else {
-        await signup(name, password);
-      }
+      if (mode === 'login') await login(name, password);
+      else await signup(name, password);
       navigate('/calendar');
     } catch (e) {
       alert(e.message);
@@ -35,26 +32,10 @@ export default function Login() {
         <button onClick={() => setMode('login')} className={mode==='login'?'active':''}>로그인</button>
         <button onClick={() => setMode('signup')} className={mode==='signup'?'active':''}>회원가입</button>
       </div>
-      <input
-        placeholder="이름"
-        value={name}
-        onChange={e => setName(e.target.value)}
-        disabled={loading}
-      />
-      <input
-        type="password"
-        placeholder="비밀번호"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        disabled={loading}
-      />
-      <button
-        className="bubble-button"
-        onClick={handleAuth}
-        disabled={loading}
-      >
+      <input placeholder="이름" value={name} onChange={e => setName(e.target.value)} disabled={loading} />
+      <input type="password" placeholder="비밀번호" value={password} onChange={e => setPassword(e.target.value)} disabled={loading} />
+      <button className="bubble-button" onClick={handleAuth} disabled={loading}>
         {loading ? <span className="spinner" /> : (mode === 'login' ? '로그인' : '회원가입')}
       </button>
     </div>
-  );
-}
+); }
