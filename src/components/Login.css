@@ -1,0 +1,47 @@
+.login-box {
+  max-width: 320px;
+  margin: auto;
+  padding: 20px;
+}
+
+.mode-switch button {
+  padding: 8px 16px;
+  border-radius: 16px;
+  margin-right: 8px;
+  border: 1px solid #4ea8de;
+  background: white;
+  color: #4ea8de;
+  cursor: pointer;
+}
+.mode-switch button.active {
+  background: #4ea8de;
+  color: white;
+  border: none;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.bubble-button {
+  width: 100%;
+  padding: 12px 0;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
